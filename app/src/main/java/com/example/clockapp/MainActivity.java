@@ -1,11 +1,11 @@
 package com.example.clockapp;
 
-
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.view.WindowManager; // 引入這個包
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,6 +28,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // 讓螢幕保持常亮
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+
         timeText = findViewById(R.id.timeText);
 
         // 啟動時鐘服務
@@ -36,6 +39,13 @@ public class MainActivity extends AppCompatActivity {
         // 註冊廣播接收器
         IntentFilter filter = new IntentFilter("UpdateClock");
         registerReceiver(clockReceiver, filter);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        // 在暫停時清除保持常亮的標誌
+        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
     }
 
     @Override
