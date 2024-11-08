@@ -1,8 +1,10 @@
 <resources>
-    <style name="Theme.ClockApp" parent="Theme.AppCompat.DayNight.NoActionBar"> <!-- 修改這裡 -->
+    <style name="Theme.ClockApp" parent="Theme.AppCompat.DayNight.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowBackground">#000000</item> <!-- 設置背景為黑色 -->
+        <item name="android:textColor">#FFFFFF</item> <!-- 設置字體顏色為白色 -->
     </style>
 </resources>
